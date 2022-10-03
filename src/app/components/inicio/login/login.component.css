@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h3 {
+    font-family: 'Rowdies', cursive;
+}
+
+a {
+    color: #f05f44;
+    cursor: pointer;
+}
+
+.btn-login {
+    background-color: #f05f44;
+    border-color: #f05f44;
+}

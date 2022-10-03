@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row col">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center p-3">
+                <h3>Register</h3>
+                <br>
+                <form [formGroup]="register" (ngSubmit)="registrarUsuario()">
+                    <div class="row mx-1 mb-3">
+                        <input class="form-control" formControlName="usuario" placeholder="User" type="text">
+                        <span *ngIf="register.get('usuario')?.hasError('required') && register.get('usuario')?.touched" class="text-danger text-start">
+                            El usuario <strong>es requerido</strong>
+                        </span>
+                    </div>
+                    <div class="row mx-1 mb-3">
+                        <input autocomplete="off" class="form-control" formControlName="password" placeholder="Password" type="password">
+                        <span *ngIf="register.get('password')?.hasError('required') && register.get('password')?.touched" class="text-danger text-start">
+                            El password <strong>es requerido</strong>
+                        </span>
+                        <span *ngIf="register.get('password')?.hasError('minlength') && register.get('password')?.touched" class="text-danger text-start">
+                            El password debe tener <strong>como mínimo 4 caracteres</strong>
+                        </span>
+                    </div>
+                    <div class="row mx-1 mb-3">
+                        <input autocomplete="off" class="form-control" formControlName="confirmPass" placeholder="Confirm Password" type="password">
+                        <span *ngIf="register.hasError('notSame')  && register.get('confirmPass')?.touched" class="text-danger text-start">
+                            Los password <strong>son distintos</strong>
+                        </span>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary btn-login me-2" type="submit" [disabled]="register.invalid">Aceptar</button>
+                        <button class="btn btn-secondary" [routerLink]="['/inicio']">Volver</button>
+                    </div>
+                    <div class="mb-3">
+                        <a [routerLink]="['/inicio/login']">Ya tienes una cuenta?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

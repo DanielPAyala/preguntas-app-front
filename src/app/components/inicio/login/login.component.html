@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row col">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center p-3">
+                <h3>Login</h3>
+                <app-loading *ngIf="loading" class="mb-2"></app-loading>
+                <form [formGroup]="login" (ngSubmit)="log()">
+                    <div class="row mx-1 mb-3">
+                        <input class="form-control" formControlName="usuario" placeholder="User" type="text">
+                        <span *ngIf="login.get('usuario')?.hasError('required') && login.get('usuario')?.touched" class="text-danger text-start">El usuario <strong>es requerido</strong></span>
+                    </div>
+                    <div class="row mx-1 mb-3">
+                        <input autocomplete="off" class="form-control" formControlName="password" placeholder="Password" type="password">
+                        <span *ngIf="login.get('password')?.hasError('required') && login.get('password')?.touched" class="text-danger text-start">El password <strong>es requerido</strong></span>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary btn-login me-2" type="submit" [disabled]="login.invalid">Aceptar</button>
+                        <button class="btn btn-secondary" [routerLink]="['/inicio']">Volver</button>
+                    </div>
+                    <div class="mb-3">
+                        <a [routerLink]="['/inicio/register']">Crear Cuenta</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
