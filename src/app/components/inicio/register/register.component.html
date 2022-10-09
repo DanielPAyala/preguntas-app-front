@@ -3,7 +3,7 @@
         <div class="col-lg-6 offset-lg-3">
             <div class="card text-center p-3">
                 <h3>Register</h3>
-                <br>
+                <app-loading *ngIf="loading"></app-loading>
                 <form [formGroup]="register" (ngSubmit)="registrarUsuario()">
                     <div class="row mx-1 mb-3">
                         <input class="form-control" formControlName="usuario" placeholder="User" type="text">
@@ -22,7 +22,7 @@
                     </div>
                     <div class="row mx-1 mb-3">
                         <input autocomplete="off" class="form-control" formControlName="confirmPass" placeholder="Confirm Password" type="password">
-                        <span *ngIf="register.hasError('notSame')  && register.get('confirmPass')?.touched" class="text-danger text-start">
+                        <span *ngIf="register.hasError('notSame') && register.get('confirmPass')?.touched" class="text-danger text-start">
                             Los password <strong>son distintos</strong>
                         </span>
                     </div>
