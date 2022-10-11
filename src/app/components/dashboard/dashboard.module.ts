@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard.component';
 import { CambiarPasswordComponent } from './cambiar-password/cambiar-password.component';
 import { CuestionariosComponent } from './cuestionarios/cuestionarios.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
@@ -22,7 +23,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }
