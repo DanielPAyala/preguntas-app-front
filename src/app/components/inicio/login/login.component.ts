@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { Usuario } from '../../../models/usuario';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private toastr: ToastrService,
-    private router: Router) { 
+    private router: Router,
+    private loginService: LoginService) { 
     this.login = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required]
@@ -34,16 +36,30 @@ export class LoginComponent implements OnInit {
     };
 
     this.loading = true;
-    setTimeout(() => {
-      if (usuario.nombreUsuario === '1234' && usuario.password == '1234') {
-        this.login.reset();
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.toastr.error('User or password failed', 'Error');
-        this.login.reset();
+
+    this.loginService.login(usuario).subscribe({
+      next: (resp) => {
         this.loading = false;
+        this.login.reset();
+        this.loginService.setNombreUsuario(resp.usuario);
+        this.router.navigate(['/dashboard']);
+      },
+      error: (err) => {
+        this.loading = false;
+        this.toastr.error(err.error.message, 'Error');
+        this.login.reset();
       }
-    }, 2500);
+    })
+    // setTimeout(() => {
+    //   if (usuario.nombreUsuario === '1234' && usuario.password == '1234') {
+    //     this.login.reset();
+    //     this.router.navigate(['/dashboard']);
+    //   } else {
+    //     this.toastr.error('User or password failed', 'Error');
+    //     this.login.reset();
+    //     this.loading = false;
+    //   }
+    // }, 2500);
   }
 
 }
