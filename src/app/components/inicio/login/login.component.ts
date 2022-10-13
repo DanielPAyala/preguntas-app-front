@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       next: (resp) => {
         this.loading = false;
         this.login.reset();
-        this.loginService.setNombreUsuario(resp.usuario);
+        this.loginService.setNombreUsuario(resp.token);
         this.router.navigate(['/dashboard']);
       },
       error: (err) => {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -10,7 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InicioModule } from './components/inicio/inicio.module';
 import { DashboardModule } from './components/dashboard/dashboard.module';
-import { SharedModule } from './shared/shared.module';
+
+// Interceptors
+import { AddTokenInterceptor } from './helpers/add-token.interceptor';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { SharedModule } from './shared/shared.module';
     InicioModule,
     DashboardModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
