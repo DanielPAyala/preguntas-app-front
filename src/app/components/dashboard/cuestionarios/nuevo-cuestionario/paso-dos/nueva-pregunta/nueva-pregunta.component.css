@@ -1,0 +1,10 @@
+.delete-icon {
+    font-size: 39px;
+    color: red;
+    cursor: pointer;
+}
+
+.add-icon {
+    font-size: 39px;
+    cursor: pointer;
+}

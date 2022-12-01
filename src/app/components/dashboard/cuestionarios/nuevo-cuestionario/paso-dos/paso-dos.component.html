@@ -1,0 +1,46 @@
+<div class="text-center">
+    <app-loading *ngIf="loading"></app-loading>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h3 class="text-center">Listado de Preguntas</h3>
+        <hr>
+        <div class="card mb-2" *ngFor="let pregunta of listPreguntas; let i = index">
+            <div class="card-header d-flex justify-content-between">
+                <div class="col-8 d-flex align-items-center">
+                    <h5 class="mb-0">{{ pregunta.descripcion }}</h5>
+                </div>
+                <div class="col-4 d-flex justify-content-center">
+                    <button class="btn btn-primary btn-sm ms-1" (click)="pregunta.hide = !pregunta.hide">Mostrar</button>
+                    <button class="btn btn-danger btn-sm ms-1" (click)="eliminarPregunta(i)">Eliminar</button>
+                </div>
+            </div>
+            <div class="card-body" [hidden]="pregunta.hide">
+                <ul class="list-group">
+                    <li class="list-group-item p-1 ps-3" *ngFor="let respuesta of pregunta.listRespuesta"
+                        [ngClass]="{'list-group-item-success': respuesta.esCorrecta}">
+                        {{ respuesta.descripcion }}
+                        <span class="material-icons float-end" *ngIf="respuesta.esCorrecta">
+                            check_circle
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf="listPreguntas.length == 0">
+            <h6>No hay preguntas para mostrar</h6>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <h3 class="text-center">Nueva Pregunta</h3>
+        <hr>
+        <app-nueva-pregunta (enviarPregunta)="guardarPregunta($event)"></app-nueva-pregunta>
+    </div>
+</div>
+
+<button class="btn btn-success btn-lg position-fixed bottom-0 end-0 m-3" [disabled]="listPreguntas.length == 0"
+(click)="guardarCuestionario()">
+    FINALIZAR CUESTIONARIO
+</button>

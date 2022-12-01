@@ -10,6 +10,10 @@ import { CambiarPasswordComponent } from './cambiar-password/cambiar-password.co
 import { CuestionariosComponent } from './cuestionarios/cuestionarios.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from '../../shared/shared.module';
+import { NuevoCuestionarioComponent } from './cuestionarios/nuevo-cuestionario/nuevo-cuestionario.component';
+import { PasoUnoComponent } from './cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
+import { PasoDosComponent } from './cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
+import { NuevaPreguntaComponent } from './cuestionarios/nuevo-cuestionario/paso-dos/nueva-pregunta/nueva-pregunta.component';
 
 
 
@@ -18,13 +22,20 @@ import { SharedModule } from '../../shared/shared.module';
     DashboardComponent,
     CambiarPasswordComponent,
     CuestionariosComponent,
-    NavbarComponent
+    NavbarComponent,
+    NuevoCuestionarioComponent,
+    PasoUnoComponent,
+    PasoDosComponent,
+    NuevaPreguntaComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     AppRoutingModule,
     SharedModule
+  ],
+  exports: [
+    DashboardComponent
   ]
 })
 export class DashboardModule { }
