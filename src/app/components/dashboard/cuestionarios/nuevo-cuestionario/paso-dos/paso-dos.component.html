@@ -18,7 +18,7 @@
             </div>
             <div class="card-body" [hidden]="pregunta.hide">
                 <ul class="list-group">
-                    <li class="list-group-item p-1 ps-3" *ngFor="let respuesta of pregunta.listRespuesta"
+                    <li class="list-group-item p-1 ps-3" *ngFor="let respuesta of pregunta.listRespuestas"
                         [ngClass]="{'list-group-item-success': respuesta.esCorrecta}">
                         {{ respuesta.descripcion }}
                         <span class="material-icons float-end" *ngIf="respuesta.esCorrecta">

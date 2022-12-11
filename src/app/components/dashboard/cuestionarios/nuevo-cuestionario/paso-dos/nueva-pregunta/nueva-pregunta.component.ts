@@ -76,7 +76,7 @@ export class NuevaPreguntaComponent implements OnInit {
 
     arrayRepuestas.forEach((element: any, index: number) => {
       const respuesta: Respuesta = new Respuesta(element.descripcion, false);
-      if(index === element.esCorrecta) {
+      if(index === this.rtaCorrecta) {
         respuesta.esCorrecta = true;
       }
       arrayRta.push(respuesta);
@@ -88,6 +88,7 @@ export class NuevaPreguntaComponent implements OnInit {
   }
 
   reset(): void {
+    this.rtaCorrecta = 0;
     this.nuevaPregunta.reset();
     this.respuestas.clear();
     this.agregarRepuestasPorDefecto();

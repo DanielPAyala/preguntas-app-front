@@ -22,4 +22,16 @@ export class CuestionarioService {
   guardarCuestionario(cuestionario: Cuestionario): Observable<any>{
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, cuestionario);
   }
+
+  getListCuestionarios(): Observable<any> {
+    return this.http.get(this.myAppUrl + this.myApiUrl+ '/GetListCuestionarioByUser');
+  }
+
+  deleteCuestionario(idCuestionario: number): Observable<any> {
+    return this.http.delete(`${this.myAppUrl}${this.myApiUrl}/${idCuestionario}`);
+  }
+
+  getCuestionario(idCuestionario: number): Observable<any> {
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}/${idCuestionario}`);
+  }
 }

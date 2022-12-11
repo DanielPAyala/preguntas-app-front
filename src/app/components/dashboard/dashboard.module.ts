@@ -14,6 +14,7 @@ import { NuevoCuestionarioComponent } from './cuestionarios/nuevo-cuestionario/n
 import { PasoUnoComponent } from './cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
 import { PasoDosComponent } from './cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
 import { NuevaPreguntaComponent } from './cuestionarios/nuevo-cuestionario/paso-dos/nueva-pregunta/nueva-pregunta.component';
+import { CuestionarioComponent } from './cuestionarios/cuestionario/cuestionario.component';
 
 
 
@@ -26,7 +27,8 @@ import { NuevaPreguntaComponent } from './cuestionarios/nuevo-cuestionario/paso-
     NuevoCuestionarioComponent,
     PasoUnoComponent,
     PasoDosComponent,
-    NuevaPreguntaComponent
+    NuevaPreguntaComponent,
+    CuestionarioComponent
   ],
   imports: [
     CommonModule,
