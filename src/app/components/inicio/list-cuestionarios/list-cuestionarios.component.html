@@ -1,1 +1,30 @@
-<p>list-cuestionarios works!</p>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="col">
+        <div class="card text-center mt-4 mb-4">
+            <br>
+            <h3>Bienvenido</h3>
+            <app-loading *ngIf="loading"></app-loading>
+            <h4 *ngIf="listCuestionarios.length == 0 && loading == false">No hay cuestionarios para mostrar</h4>
+            <div class="row ms-0 me-0 mt-4">
+                <div class="col-md-4 mb-4" *ngFor="let item of listCuestionarios">
+                    <div class="card bg-light">
+                        <div class="card-body text-center">
+                            <h4 class="card-title">{{ item.nombre }}</h4>
+                            <p class="card-text">{{ item.descripcion }}</p>
+                            <div>
+                                <strong>Creador: </strong> {{ item.usuario?.nombreUsuario }}
+                            </div>
+                            <div>
+                                <strong>Fecha Creacion: </strong> {{item.fechaCreacion | date: 'dd/MM/yyyy'}}
+                            </div>
+                            <button class="btn btn-warning text-light btn-md mt-3" (click)="ingresarNombre(item.id!)">INGRESAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-secondary btn-lg" routerLink="/inicio">VOLVER</button>
+            </div>
+        </div>
+    </div>
+</div>

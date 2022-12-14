@@ -29,7 +29,7 @@ export class CuestionariosComponent implements OnInit {
 
   getCuestionarios(): void {
     this.loading = true;
-    this.cuestionarioService.getListCuestionarios().subscribe({
+    this.cuestionarioService.getListCuestionariosByUser().subscribe({
       next: (resp) => {
         this.listCuestionarios = resp;
         this.loading = false;

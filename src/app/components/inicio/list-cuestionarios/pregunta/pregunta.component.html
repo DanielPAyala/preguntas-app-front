@@ -1,1 +1,19 @@
-<p>pregunta works!</p>
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="col">
+        <div class="card text-center mt-4 mb-4">
+            <app-loading class="p-4" *ngIf="loading"></app-loading>
+            <div class="p-4" *ngIf="listPreguntas.length > 0 && !loading">
+                <h4 class="card-title">{{ getPregunta() }}</h4>
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-action" *ngFor="let respuesta of listPreguntas[getIndex()].listRespuestas"
+                    (click)="respuestaSeleccionada(respuesta)" [ngClass]="addClassOption(respuesta)">
+                        {{ respuesta.descripcion }}
+                    </li>
+                </ul>
+                <div class="mt-4">
+                    <button class="btn btn-warning btn-lg text-white" (click)="siguiente()" [disabled]="!rtaConfirmada">SIGUIENTE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

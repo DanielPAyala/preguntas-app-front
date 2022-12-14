@@ -1,1 +1,25 @@
-<p>respuesta-cuestionario works!</p>
+<div class="container d-flex  align-items-center">
+    <div class="col">
+        <div class="card text-center mt-4 mb-4 p-4">
+            <h4>Resultado</h4>
+            <p>Este es el resultado del cuestionario</p>
+            <div class="card mb-4" *ngFor="let pregunta of cuestionario?.listPreguntas; let i = index">
+                <div class="card-header">
+                    <b>{{ pregunta.descripcion }}</b>
+                </div>
+                <ul class="list-group list-group-flush" *ngFor="let respuesta of pregunta.listRespuestas">
+                    <li class="list-group-item" [ngClass]="{'list-group-item-success': respuesta.esCorrecta && respuesta.id == respuestaUsuario[i],'list-group-item-danger': !respuesta.esCorrecta && respuesta.id == respuestaUsuario[i]}">
+                        {{ respuesta.descripcion }}
+                        <span *ngIf="respuesta.esCorrecta && respuesta.id == respuestaUsuario[i]" class="material-icons float-end">check_circle</span>
+                        <span *ngIf="!respuesta.esCorrecta && respuesta.id == respuestaUsuario[i]" class="material-icons float-end">highlight_off</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4 d-grid">
+                    <button class="btn btn-primary btn-lg" routerLink="/inicio">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Modules
 import { AppRoutingModule } from '../../app-routing.module';
@@ -31,7 +31,8 @@ import { RespuestaCuestionarioComponent } from './list-cuestionarios/respuesta-c
     CommonModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     InicioComponent

@@ -23,7 +23,7 @@ export class CuestionarioService {
     return this.http.post(`${this.myAppUrl}${this.myApiUrl}`, cuestionario);
   }
 
-  getListCuestionarios(): Observable<any> {
+  getListCuestionariosByUser(): Observable<any> {
     return this.http.get(this.myAppUrl + this.myApiUrl+ '/GetListCuestionarioByUser');
   }
 
@@ -33,5 +33,9 @@ export class CuestionarioService {
 
   getCuestionario(idCuestionario: number): Observable<any> {
     return this.http.get(`${this.myAppUrl}${this.myApiUrl}/${idCuestionario}`);
+  }
+
+  getListCuestionarios(): Observable<any> {
+    return this.http.get(`${this.myAppUrl}${this.myApiUrl}/GetListCuestionarios`)
   }
 }

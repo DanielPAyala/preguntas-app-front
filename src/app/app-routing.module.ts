@@ -13,6 +13,10 @@ import { NuevoCuestionarioComponent } from './components/dashboard/cuestionarios
 import { PasoUnoComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-uno/paso-uno.component';
 import { PasoDosComponent } from './components/dashboard/cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
 import { CuestionarioComponent } from './components/dashboard/cuestionarios/cuestionario/cuestionario.component';
+import { ListCuestionariosComponent } from './components/inicio/list-cuestionarios/list-cuestionarios.component';
+import { IngresarNombreComponent } from './components/inicio/list-cuestionarios/ingresar-nombre/ingresar-nombre.component';
+import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregunta/pregunta.component';
+import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/inicio', pathMatch: 'full'},
@@ -20,6 +24,10 @@ const routes: Routes = [
     {path: '', component: WelcomeComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'listCuestionarios', component: ListCuestionariosComponent},
+    {path: 'ingresarNombre', component: IngresarNombreComponent},
+    {path: 'pregunta', component: PreguntaComponent},
+    {path: 'respuestaCuestionario', component: RespuestaCuestionarioComponent}
   ]},
   {path: 'dashboard', component: DashboardComponent, children: [
     {path: '', component: CuestionariosComponent},
