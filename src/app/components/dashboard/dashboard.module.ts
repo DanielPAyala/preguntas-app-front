@@ -15,6 +15,8 @@ import { PasoUnoComponent } from './cuestionarios/nuevo-cuestionario/paso-uno/pa
 import { PasoDosComponent } from './cuestionarios/nuevo-cuestionario/paso-dos/paso-dos.component';
 import { NuevaPreguntaComponent } from './cuestionarios/nuevo-cuestionario/paso-dos/nueva-pregunta/nueva-pregunta.component';
 import { CuestionarioComponent } from './cuestionarios/cuestionario/cuestionario.component';
+import { EstadisticasComponent } from './cuestionarios/estadisticas/estadisticas.component';
+import { DetalleRespuestaComponent } from './cuestionarios/estadisticas/detalle-respuesta/detalle-respuesta.component';
 
 
 
@@ -28,7 +30,9 @@ import { CuestionarioComponent } from './cuestionarios/cuestionario/cuestionario
     PasoUnoComponent,
     PasoDosComponent,
     NuevaPreguntaComponent,
-    CuestionarioComponent
+    CuestionarioComponent,
+    EstadisticasComponent,
+    DetalleRespuestaComponent
   ],
   imports: [
     CommonModule,

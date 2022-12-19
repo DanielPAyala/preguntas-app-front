@@ -3,6 +3,8 @@ import { RespuestaCuestionarioService } from '../../../../services/respuesta-cue
 import { CuestionarioService } from '../../../../services/cuestionario.service';
 import { Router } from '@angular/router';
 import { Pregunta } from '../../../../models/pregunta';
+import { RespuestaCuestionarioDetalle } from '../../../../models/respuestaCuestionarioDetalle';
+import { RespuestaCuestionario } from '../../../../models/respuestaCuestionario';
 
 @Component({
   selector: 'app-pregunta',
@@ -17,6 +19,8 @@ export class PreguntaComponent implements OnInit {
   opcionSeleccionada: any;
   index: number = 0;
   idRespuestaSeleccionada: number = 0;
+
+  listRespuestaDetalle: RespuestaCuestionarioDetalle[] = [];
 
   constructor(
     private respuestaCuestionarioService: RespuestaCuestionarioService,
@@ -70,12 +74,37 @@ export class PreguntaComponent implements OnInit {
 
   siguiente(): void {
     this.respuestaCuestionarioService.respuestas.push(this.idRespuestaSeleccionada);
+
+    this.listRespuestaDetalle.push({respuestaId: this.idRespuestaSeleccionada});
+
     this.rtaConfirmada = false;
     this.index++;
     console.log(this.respuestaCuestionarioService.respuestas);
     this.idRespuestaSeleccionada = 0;
     if (this.index === this.listPreguntas.length) {
-      this.router.navigate(['/inicio/respuestaCuestionario'])
+      // this.router.navigate(['/inicio/respuestaCuestionario'])
+      this.guardarRespuestaCuestionario();
     }
+  }
+
+  guardarRespuestaCuestionario(): void {
+    const rtaCuestionario:RespuestaCuestionario = {
+      cuestionarioId: this.respuestaCuestionarioService.idCuestionario,
+      nombreParticipante: this.respuestaCuestionarioService.nombreParticipante,
+      ListRtaCuestionarioDetalle: this.listRespuestaDetalle
+    }
+
+    this.loading = true;
+
+    this.respuestaCuestionarioService.guardarRespuestaCuestionario(rtaCuestionario).subscribe({
+      next: (resp) => {
+        this.router.navigate(['/inicio/respuestaCuestionario']);
+        this.loading = false;
+      },
+      error: (err) => {
+        this.loading = false;
+        console.log(err);
+      }
+    })
   }
 }
