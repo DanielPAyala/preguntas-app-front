@@ -19,6 +19,7 @@ import { PreguntaComponent } from './components/inicio/list-cuestionarios/pregun
 import { RespuestaCuestionarioComponent } from './components/inicio/list-cuestionarios/respuesta-cuestionario/respuesta-cuestionario.component';
 import { EstadisticasComponent } from './components/dashboard/cuestionarios/estadisticas/estadisticas.component';
 import { DetalleRespuestaComponent } from './components/dashboard/cuestionarios/estadisticas/detalle-respuesta/detalle-respuesta.component';
+import { AuthGuard } from './helpers/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/inicio', pathMatch: 'full'},
@@ -31,7 +32,7 @@ const routes: Routes = [
     {path: 'pregunta', component: PreguntaComponent},
     {path: 'respuestaCuestionario', component: RespuestaCuestionarioComponent}
   ]},
-  {path: 'dashboard', component: DashboardComponent, children: [
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
     {path: '', component: CuestionariosComponent},
     {path: 'cambiarPassword', component: CambiarPasswordComponent},
     {path: 'verCuestionario/:id', component: CuestionarioComponent},

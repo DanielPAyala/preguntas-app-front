@@ -40,4 +40,8 @@ export class LoginService {
   removeLocalStorage(): void {
     localStorage.removeItem('token');
   }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
 }
